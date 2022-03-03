@@ -18,6 +18,8 @@ export class DashboardComponent implements OnInit {
   currentExpenditure: number = 0;
   availableFunds: number = 0;
 
+  clients: any = [];
+
   constructor() { }
 
   ngOnInit(): void {
@@ -31,6 +33,11 @@ export class DashboardComponent implements OnInit {
     this.projectCost = 2334609;
     this.currentExpenditure = 87998;
     this.availableFunds = 43534;
+    this.clients = [
+      'ABC Technology',
+      'XYZ Infotech',
+      'MNO Industries'
+    ]
 
   }
 

@@ -6,3 +6,82 @@
     <li class="breadcrumb-item active">Dashboard</li>
   </ol>
 </nav>
+
+<h5>Dashboard</h5>
+
+<div class="row">
+  <div class="col-lg-3" style="background-color: #e9e6e6">
+    <div class="row">
+      <div
+        class="col-11 text-white text-center mx-2 rounded pt-2 pv-2 font-weight-bold"
+        style="background-color: #a39e9e"
+      >
+        {{ designation }}
+      </div>
+
+      <div class="col-12 text-center mt-2">
+        <img src="../../assets/user.png" alt="" width="120px" />
+      </div>
+
+      <div class="col-12 text-center pt-2 pb-2 font-weight-bold">
+        {{ username }}
+      </div>
+
+      <div class="col-12 text-center pt-2 pb-2">TEAM SUMMARY</div>
+      <div class="col-12 mb-3">
+        <ul class="list-group">
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            NO. OF TEAM MEMBERS
+            <span
+              class="badge badge-secondary badge-pill"
+              style="font-size: 13px"
+              >{{ noOfTeamMembers }}</span
+            >
+          </li>
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            TOTAL COST OF ALL PROJECTS
+            <span
+              class="badge badge-secondary badge-pill"
+              style="font-size: 13px"
+              >{{ totalCostOfAllProjects }}</span
+            >
+          </li>
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            PENDING TASKS
+            <span
+              class="badge badge-secondary badge-pill"
+              style="font-size: 13px"
+              >{{ pendingTasks }}</span
+            >
+          </li>
+
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            UPCOMING PROJECTS
+            <span
+              class="badge badge-secondary badge-pill"
+              style="font-size: 13px"
+              >{{ upcomingProjects }}</span
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-12 text-center pt-2 pb-2">CLIENTS</div>
+      <div class="col-12">
+        <ul class="list-group list-group-flush" *ngFor="let client of clients">
+          <li class="list-group-item">{{ client }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">box 2</div>
+  <div class="col-lg-3">box 3</div>
+</div>
