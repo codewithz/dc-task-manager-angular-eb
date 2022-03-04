@@ -97,13 +97,16 @@
                 id="'dropdownMenuButton"
                 data-toggle="dropdown"
               >
-                Some Project A
+                {{ projects[0] ? projects[0] : "No Project" }}
               </button>
               <div class="dropdown-menu">
-                <a href="" class="dropdown-item">Some Project A</a>
-                <a href="" class="dropdown-item">Some Project B</a>
-                <a href="" class="dropdown-item">Some Project C</a>
-                <a href="" class="dropdown-item">Some Project D</a>
+                <a
+                  href=""
+                  *ngFor="let project of projects"
+                  class="dropdown-item"
+                >
+                  {{ project }}
+                </a>
               </div>
             </div>
             <!-- project Dropdown ends here -->
@@ -117,13 +120,12 @@
                 id="'dropdownMenuButton"
                 data-toggle="dropdown"
               >
-                2022
+                {{ years[0] ? years[0] : "No Year" }}
               </button>
               <div class="dropdown-menu">
-                <a href="" class="dropdown-item">2022</a>
-                <a href="" class="dropdown-item">2021</a>
-                <a href="" class="dropdown-item">2020</a>
-                <a href="" class="dropdown-item">2019</a>
+                <a href="" *ngFor="let year of years" class="dropdown-item">
+                  {{ year }}
+                </a>
               </div>
             </div>
             <!-- year Dropdown ends here -->
@@ -194,5 +196,283 @@
     </div>
   </div>
   <!-- Middle Panel ends here -->
-  <div class="col-lg-3">box 3</div>
+
+  <!-- right section starts here  -->
+  <div class="col-lg-3" style="background-color: #e9e6e6">
+    <div class="row">
+      <div
+        style="background-color: #718d97"
+        class="col-11 mx-auto mt-1 text-white text-center pt-2 pb-2 rounded font-weight-bold"
+      >
+        TEAM MEMBERS
+      </div>
+
+      <div class="col-lg-12 pt-2">
+        <!-- accordion starts here  -->
+        <div class="accordion" id="accordion1">
+          <!-- East starts here -->
+          <div class="card">
+            <div class="card-header bg-secondary" id="card1">
+              <h2 class="mb-0">
+                <button
+                  data-target="#cardbody1"
+                  data-toggle="collapse"
+                  type="button"
+                  class="btn btn-link text-white"
+                >
+                  EAST
+                </button>
+              </h2>
+            </div>
+
+            <div id="cardbody1" data-parent="#accordion1" class="collapse show">
+              <div class="card-body">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Tom</td>
+                      <td>
+                        <i class="fa fa-phone"></i>
+                        Available
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Alex</td>
+                      <td>
+                        <i class="fa fa-phone"></i>
+                        Available
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Mike</td>
+                      <td>
+                        <i class="fa fa-user-times"></i>
+                        Busy
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>John</td>
+                      <td>
+                        <i class="fa fa-phone"></i>
+                        Available
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <!-- East ends here  -->
+
+          <!-- West starts here -->
+          <div class="card">
+            <div class="card-header bg-secondary" id="card2">
+              <h2 class="mb-0">
+                <button
+                  data-target="#cardbody2"
+                  data-toggle="collapse"
+                  type="button"
+                  class="btn btn-link text-white"
+                >
+                  WEST
+                </button>
+              </h2>
+            </div>
+
+            <div id="cardbody2" data-parent="#accordion1" class="collapse">
+              <div class="card-body">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Tom</td>
+                      <td>
+                        <i class="fa fa-phone"></i>
+                        Available
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Alex</td>
+                      <td>
+                        <i class="fa fa-phone"></i>
+                        Available
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Mike</td>
+                      <td>
+                        <i class="fa fa-user-times"></i>
+                        Busy
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>John</td>
+                      <td>
+                        <i class="fa fa-phone"></i>
+                        Available
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <!-- West ends here  -->
+
+          <!-- North starts here -->
+          <div class="card">
+            <div class="card-header bg-secondary" id="card3">
+              <h2 class="mb-0">
+                <button
+                  data-target="#cardbody3"
+                  data-toggle="collapse"
+                  type="button"
+                  class="btn btn-link text-white"
+                >
+                  NORTH
+                </button>
+              </h2>
+            </div>
+
+            <div id="cardbody3" data-parent="#accordion1" class="collapse">
+              <div class="card-body">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Tom</td>
+                      <td>
+                        <i class="fa fa-phone"></i>
+                        Available
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Alex</td>
+                      <td>
+                        <i class="fa fa-phone"></i>
+                        Available
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Mike</td>
+                      <td>
+                        <i class="fa fa-user-times"></i>
+                        Busy
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>John</td>
+                      <td>
+                        <i class="fa fa-phone"></i>
+                        Available
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <!-- North ends here  -->
+
+          <!-- South starts here -->
+          <div class="card">
+            <div class="card-header bg-secondary" id="card4">
+              <h2 class="mb-0">
+                <button
+                  data-target="#cardbody4"
+                  data-toggle="collapse"
+                  type="button"
+                  class="btn btn-link text-white"
+                >
+                  SOUTH
+                </button>
+              </h2>
+            </div>
+
+            <div id="cardbody4" data-parent="#accordion1" class="collapse">
+              <div class="card-body">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Tom</td>
+                      <td>
+                        <i class="fa fa-phone"></i>
+                        Available
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Alex</td>
+                      <td>
+                        <i class="fa fa-phone"></i>
+                        Available
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Mike</td>
+                      <td>
+                        <i class="fa fa-user-times"></i>
+                        Busy
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>John</td>
+                      <td>
+                        <i class="fa fa-phone"></i>
+                        Available
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <!-- South ends here  -->
+        </div>
+        <!-- accordion ends here  -->
+      </div>
+    </div>
+  </div>
+  <!-- right section ends here  -->
 </div>
