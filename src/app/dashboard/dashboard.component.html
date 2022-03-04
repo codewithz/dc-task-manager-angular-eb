@@ -218,6 +218,7 @@
               [id]="'cardbody' + i"
               data-parent="#accordion1"
               class="collapse"
+              [ngClass]="i == 0 ? 'show' : ''"
             >
               <div class="card-body">
                 <table class="table">
@@ -231,7 +232,13 @@
                   <tbody>
                     <tr *ngFor="let member of team.members">
                       <td>{{ member.id }}</td>
-                      <td>{{ member.name }}</td>
+                      <td
+                        [style.color]="
+                          member.status == 'Busy' ? 'red' : 'black'
+                        "
+                      >
+                        {{ member.name }}
+                      </td>
                       <td>
                         <i class="fa fa-phone"></i>
                         {{ member.status }}
