@@ -73,10 +73,10 @@ export class DashboardComponent implements OnInit {
       {
         region: 'West',
         members: [
-          { id: 9, name: 'Harvey', status: 'Available' },
-          { id: 10, name: 'Donna', status: 'Busy' },
-          { id: 11, name: 'Mike', status: 'Busy' },
-          { id: 12, name: 'Rachel', status: 'Available' },
+          { id: 5, name: 'Leanord', status: 'Available' },
+          { id: 6, name: 'Sheldon', status: 'Busy' },
+          { id: 7, name: 'Raj', status: 'Busy' },
+          { id: 8, name: 'Howard', status: 'Available' },
         ]
       },
       {

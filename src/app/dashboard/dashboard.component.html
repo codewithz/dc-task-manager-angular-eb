@@ -170,25 +170,12 @@
             <th>Team Members Count</th>
             <th>Temporarily Unavailable Members</th>
           </tr>
-          <tr>
-            <td>EAST</td>
-            <td>20</td>
-            <td>4</td>
-          </tr>
-          <tr>
-            <td>WEST</td>
-            <td>20</td>
-            <td>4</td>
-          </tr>
-          <tr>
-            <td>SOUTH</td>
-            <td>20</td>
-            <td>4</td>
-          </tr>
-          <tr>
-            <td>NORTH</td>
-            <td>20</td>
-            <td>4</td>
+          <tr *ngFor="let summary of teamMembersSummary">
+            <td>
+              <b>{{ summary.region }}</b>
+            </td>
+            <td>{{ summary.teamMembersCount }}</td>
+            <td>{{ summary.totalUnavailableMembers }}</td>
           </tr>
         </table>
       </div>
@@ -211,21 +198,25 @@
         <!-- accordion starts here  -->
         <div class="accordion" id="accordion1">
           <!-- East starts here -->
-          <div class="card">
-            <div class="card-header bg-secondary" id="card1">
+          <div class="card" *ngFor="let team of teamMembers; index as i">
+            <div class="card-header bg-secondary" [id]="'card' + i">
               <h2 class="mb-0">
                 <button
-                  data-target="#cardbody1"
+                  [attr.data-target]="'#cardbody' + i"
                   data-toggle="collapse"
                   type="button"
                   class="btn btn-link text-white"
                 >
-                  EAST
+                  {{ team.region }}
                 </button>
               </h2>
             </div>
 
-            <div id="cardbody1" data-parent="#accordion1" class="collapse show">
+            <div
+              [id]="'cardbody' + i"
+              data-parent="#accordion1"
+              class="collapse"
+            >
               <div class="card-body">
                 <table class="table">
                   <thead>
@@ -236,36 +227,12 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Tom</td>
+                    <tr *ngFor="let member of team.members">
+                      <td>{{ member.id }}</td>
+                      <td>{{ member.name }}</td>
                       <td>
                         <i class="fa fa-phone"></i>
-                        Available
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Alex</td>
-                      <td>
-                        <i class="fa fa-phone"></i>
-                        Available
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Mike</td>
-                      <td>
-                        <i class="fa fa-user-times"></i>
-                        Busy
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>John</td>
-                      <td>
-                        <i class="fa fa-phone"></i>
-                        Available
+                        {{ member.status }}
                       </td>
                     </tr>
                   </tbody>
@@ -274,201 +241,6 @@
             </div>
           </div>
           <!-- East ends here  -->
-
-          <!-- West starts here -->
-          <div class="card">
-            <div class="card-header bg-secondary" id="card2">
-              <h2 class="mb-0">
-                <button
-                  data-target="#cardbody2"
-                  data-toggle="collapse"
-                  type="button"
-                  class="btn btn-link text-white"
-                >
-                  WEST
-                </button>
-              </h2>
-            </div>
-
-            <div id="cardbody2" data-parent="#accordion1" class="collapse">
-              <div class="card-body">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Name</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Tom</td>
-                      <td>
-                        <i class="fa fa-phone"></i>
-                        Available
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Alex</td>
-                      <td>
-                        <i class="fa fa-phone"></i>
-                        Available
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Mike</td>
-                      <td>
-                        <i class="fa fa-user-times"></i>
-                        Busy
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>John</td>
-                      <td>
-                        <i class="fa fa-phone"></i>
-                        Available
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-          <!-- West ends here  -->
-
-          <!-- North starts here -->
-          <div class="card">
-            <div class="card-header bg-secondary" id="card3">
-              <h2 class="mb-0">
-                <button
-                  data-target="#cardbody3"
-                  data-toggle="collapse"
-                  type="button"
-                  class="btn btn-link text-white"
-                >
-                  NORTH
-                </button>
-              </h2>
-            </div>
-
-            <div id="cardbody3" data-parent="#accordion1" class="collapse">
-              <div class="card-body">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Name</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Tom</td>
-                      <td>
-                        <i class="fa fa-phone"></i>
-                        Available
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Alex</td>
-                      <td>
-                        <i class="fa fa-phone"></i>
-                        Available
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Mike</td>
-                      <td>
-                        <i class="fa fa-user-times"></i>
-                        Busy
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>John</td>
-                      <td>
-                        <i class="fa fa-phone"></i>
-                        Available
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-          <!-- North ends here  -->
-
-          <!-- South starts here -->
-          <div class="card">
-            <div class="card-header bg-secondary" id="card4">
-              <h2 class="mb-0">
-                <button
-                  data-target="#cardbody4"
-                  data-toggle="collapse"
-                  type="button"
-                  class="btn btn-link text-white"
-                >
-                  SOUTH
-                </button>
-              </h2>
-            </div>
-
-            <div id="cardbody4" data-parent="#accordion1" class="collapse">
-              <div class="card-body">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Name</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Tom</td>
-                      <td>
-                        <i class="fa fa-phone"></i>
-                        Available
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Alex</td>
-                      <td>
-                        <i class="fa fa-phone"></i>
-                        Available
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Mike</td>
-                      <td>
-                        <i class="fa fa-user-times"></i>
-                        Busy
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>John</td>
-                      <td>
-                        <i class="fa fa-phone"></i>
-                        Available
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-          <!-- South ends here  -->
         </div>
         <!-- accordion ends here  -->
       </div>
