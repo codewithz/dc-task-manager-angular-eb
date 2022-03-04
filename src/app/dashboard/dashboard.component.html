@@ -240,7 +240,14 @@
                         {{ member.name }}
                       </td>
                       <td>
-                        <i class="fa fa-phone"></i>
+                        <i
+                          class="fa"
+                          [ngClass]="{
+                            'fa-phone': member.status === 'Available',
+                            'fa-user-times': member.status === 'Busy'
+                          }"
+                        ></i>
+
                         {{ member.status }}
                       </td>
                     </tr>
