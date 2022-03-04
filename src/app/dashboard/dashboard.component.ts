@@ -18,6 +18,8 @@ export class DashboardComponent implements OnInit {
   currentExpenditure: number = 0;
   availableFunds: number = 0;
 
+  today: any;
+
   clients: any = [];
   projects: any = [];
   years: any = [];
@@ -27,6 +29,8 @@ export class DashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
+    this.today = new Date();
 
     this.designation = 'Team Leader';
     this.username = 'Tom Smith';

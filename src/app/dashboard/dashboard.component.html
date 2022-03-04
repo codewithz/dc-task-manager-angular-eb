@@ -8,6 +8,7 @@
 </nav>
 
 <h5>Dashboard</h5>
+<h6>{{ today | date }}</h6>
 
 <div class="row">
   <div class="col-lg-3" style="background-color: #e9e6e6">
@@ -16,7 +17,7 @@
         class="col-11 text-white text-center mx-2 rounded pt-2 pv-2 font-weight-bold"
         style="background-color: #a39e9e"
       >
-        {{ designation }}
+        {{ designation | uppercase }}
       </div>
 
       <div class="col-12 text-center mt-2">
@@ -24,7 +25,7 @@
       </div>
 
       <div class="col-12 text-center pt-2 pb-2 font-weight-bold">
-        {{ username }}
+        {{ username | lowercase }}
       </div>
 
       <div class="col-12 text-center pt-2 pb-2">TEAM SUMMARY</div>
@@ -47,7 +48,7 @@
             <span
               class="badge badge-secondary badge-pill"
               style="font-size: 13px"
-              >{{ totalCostOfAllProjects }}</span
+              >${{ totalCostOfAllProjects }}k</span
             >
           </li>
           <li
@@ -77,7 +78,7 @@
       <div class="col-12 text-center pt-2 pb-2">CLIENTS</div>
       <div class="col-12">
         <ul class="list-group list-group-flush" *ngFor="let client of clients">
-          <li class="list-group-item">{{ client }}</li>
+          <li class="list-group-item">{{ client | slice: 0:10 }}</li>
         </ul>
       </div>
     </div>
@@ -145,15 +146,15 @@
         <table class="table table-borderless">
           <tr>
             <td>Project Cost</td>
-            <td>${{ projectCost }}</td>
+            <td>{{ projectCost | currency }}</td>
           </tr>
           <tr>
             <td>Current Expenditure</td>
-            <td>${{ currentExpenditure }}</td>
+            <td>{{ currentExpenditure | currency }}</td>
           </tr>
           <tr>
             <td>Available Funds</td>
-            <td>${{ availableFunds }}</td>
+            <td>{{ availableFunds | currency }}</td>
           </tr>
         </table>
       </div>
