@@ -19,4 +19,8 @@ export class ProjectsService {
   createProject(project: Project): Observable<Project> {
     return this.http.post<Project>(this.url, project);
   }
+
+  updateProject(project: Project): Observable<Project> {
+    return this.http.put<Project>(this.url, project);
+  }
 }

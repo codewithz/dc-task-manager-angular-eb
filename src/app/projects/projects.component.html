@@ -14,19 +14,31 @@
         <th>Project Name</th>
         <th>Date of Start</th>
         <th>Team Size</th>
+        <th>Actions</th>
       </thead>
       <tbody>
-        <tr *ngFor="let project of projects">
+        <tr *ngFor="let project of projects; index as i">
           <td>{{ project.projectID }}</td>
           <td>{{ project.projectName }}</td>
           <td>{{ project.dateOfStart }}</td>
           <td>{{ project.teamSize }}</td>
+          <td>
+            <button
+              class="btn btn-sm btn-primary m-2"
+              data-toggle="modal"
+              data-target="#editProjectModal"
+              (click)="onEditClicked($event, i)"
+            >
+              Edit
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
   </div>
 </div>
 
+<!-- Create Project  -->
 <form>
   <div class="modal" role="dialog" id="newProjectModal">
     <div class="modal-dialog">
@@ -124,3 +136,104 @@
     </div>
   </div>
 </form>
+<!-- Create Project End here -->
+
+<!-- Edit Project  -->
+<form>
+  <div class="modal" role="dialog" id="editProjectModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title text-color">Edit Project</div>
+          <button class="close" type="button" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="form-group row">
+            <label for="projectID" class="col-sm-4 form-label">
+              Project ID
+            </label>
+            <div class="col-sm-8">
+              <input
+                type="number"
+                style="width: 150px"
+                placeholder="Project ID"
+                name="projectId"
+                id="projectId"
+                class="form-control"
+                [(ngModel)]="projectToBeEdited.projectID"
+              />
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="projectName" class="col-sm-4 form-label">
+              Project Name
+            </label>
+            <div class="col-sm-8">
+              <input
+                type="text"
+                style="width: 200px"
+                placeholder="Project Name"
+                name="projectName"
+                id="projectName"
+                class="form-control"
+                [(ngModel)]="projectToBeEdited.projectName"
+              />
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="dateOfStart" class="col-sm-4 form-label">
+              Date of Start
+            </label>
+            <div class="col-sm-8">
+              <input
+                type="date"
+                style="width: 200px"
+                placeholder="Date of Start"
+                name="dateOfStart"
+                id="dateOfStart"
+                class="form-control"
+                [(ngModel)]="projectToBeEdited.dateOfStart"
+              />
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="teamSize" class="col-sm-4 form-label">
+              Team Size
+            </label>
+            <div class="col-sm-8">
+              <input
+                type="number"
+                style="width: 200px"
+                placeholder="Team Size"
+                name="teamSize"
+                id="teamSize"
+                class="form-control"
+                [(ngModel)]="projectToBeEdited.teamSize"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-sm m-2 button-color" data-dismiss="modal">
+            Cancel
+          </button>
+          <button
+            class="btn btn-sm m-2 button-color"
+            data-dismiss="modal"
+            (click)="onUpdate()"
+          >
+            Update
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<!-- Create Project End here -->
