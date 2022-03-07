@@ -1,6 +1,13 @@
 <h5>Projects</h5>
 <div class="row">
   <div class="col-8 mx-auto">
+    <button
+      class="btn btn-sm m-2 button-color"
+      data-toggle="modal"
+      data-target="#newProjectModal"
+    >
+      Create Project
+    </button>
     <table class="table">
       <thead>
         <th>Project ID</th>
@@ -19,3 +26,101 @@
     </table>
   </div>
 </div>
+
+<form>
+  <div class="modal" role="dialog" id="newProjectModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title text-color">New Project</div>
+          <button class="close" type="button" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="form-group row">
+            <label for="projectID" class="col-sm-4 form-label">
+              Project ID
+            </label>
+            <div class="col-sm-8">
+              <input
+                type="number"
+                style="width: 150px"
+                placeholder="Project ID"
+                name="projectId"
+                id="projectId"
+                class="form-control"
+                [(ngModel)]="newProject.projectID"
+              />
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="projectName" class="col-sm-4 form-label">
+              Project Name
+            </label>
+            <div class="col-sm-8">
+              <input
+                type="text"
+                style="width: 200px"
+                placeholder="Project Name"
+                name="projectName"
+                id="projectName"
+                class="form-control"
+                [(ngModel)]="newProject.projectName"
+              />
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="dateOfStart" class="col-sm-4 form-label">
+              Date of Start
+            </label>
+            <div class="col-sm-8">
+              <input
+                type="date"
+                style="width: 200px"
+                placeholder="Date of Start"
+                name="dateOfStart"
+                id="dateOfStart"
+                class="form-control"
+                [(ngModel)]="newProject.dateOfStart"
+              />
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="teamSize" class="col-sm-4 form-label">
+              Team Size
+            </label>
+            <div class="col-sm-8">
+              <input
+                type="number"
+                style="width: 200px"
+                placeholder="Team Size"
+                name="teamSize"
+                id="teamSize"
+                class="form-control"
+                [(ngModel)]="newProject.teamSize"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-sm m-2 button-color" data-dismiss="modal">
+            Cancel
+          </button>
+          <button
+            class="btn btn-sm m-2 button-color"
+            data-dismiss="modal"
+            (click)="onSave()"
+          >
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

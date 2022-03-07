@@ -10,6 +10,9 @@ import { ProjectsService } from './projects.service';
 export class ProjectsComponent implements OnInit {
 
   projects: Project[] = [];
+
+  newProject: Project = new Project();
+
   constructor(private service: ProjectsService) { }
 
   ngOnInit(): void {
@@ -26,6 +29,19 @@ export class ProjectsComponent implements OnInit {
 
   }
 
-  //GET CALL
+  onSave() {
+    this.service.createProject(this.newProject)
+      .subscribe(
+        (response) => {
+          let createdProject: Project = response;
+          this.projects.push(createdProject);
+        },
+        (error) => {
+          console.log(error)
+        }
+      )
+  }
+
+
 
 }
