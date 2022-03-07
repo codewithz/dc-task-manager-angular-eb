@@ -26,4 +26,6 @@ export class ProjectsComponent implements OnInit {
 
   }
 
+  //GET CALL
+
 }
