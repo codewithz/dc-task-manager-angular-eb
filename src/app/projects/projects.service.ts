@@ -27,4 +27,8 @@ export class ProjectsService {
   deleteProject(projectId: number): Observable<string> {
     return this.http.delete<string>(this.url + '?ProjectID=' + projectId);
   }
+
+  searchProject(searchBy: string, searchText: string): Observable<Project[]> {
+    return this.http.get<Project[]>(`${this.url}/search/${searchBy}/${searchText}`);
+  }
 }

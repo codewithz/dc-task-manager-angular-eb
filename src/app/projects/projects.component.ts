@@ -22,6 +22,9 @@ export class ProjectsComponent implements OnInit {
 
   indexOfProjectToBeDeleted: number = 0;
 
+  searchBy: string = '';
+  searchText: string = '';
+
   constructor(private service: ProjectsService) { }
 
   ngOnInit(): void {
@@ -88,6 +91,18 @@ export class ProjectsComponent implements OnInit {
         (error) => { console.log(error) }
       )
 
+  }
+
+  onSearch() {
+    this.service.searchProject(this.searchBy, this.searchText)
+      .subscribe(
+        (response) => {
+          this.projects = response;
+        },
+        (error) => {
+          console.log(error)
+        }
+      )
   }
 
 
