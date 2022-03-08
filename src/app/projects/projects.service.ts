@@ -15,14 +15,9 @@ export class ProjectsService {
 
   getProjects(): Observable<Project[]> {
 
-    let currentUser = { token: '' };
-    let header = new HttpHeaders();
-    header.set("Authorization", "Bearer ");
 
-    if (sessionStorage.currentUser != null) {
-      currentUser = JSON.parse(sessionStorage.currentUser);
-      header = header.set("Authorization", "Bearer " + currentUser.token);
-    }
+    let header = this.getHeader();
+
 
     return this.http.get<Project[]>(this.url, { headers: header })
       .pipe(
@@ -40,18 +35,36 @@ export class ProjectsService {
   }
 
   createProject(project: Project): Observable<Project> {
-    return this.http.post<Project>(this.url, project);
+    let header = this.getHeader();
+    return this.http.post<Project>(this.url, project, { headers: header });
   }
 
   updateProject(project: Project): Observable<Project> {
-    return this.http.put<Project>(this.url, project);
+    let header = this.getHeader();
+    return this.http.put<Project>(this.url, project, { headers: header });
   }
 
   deleteProject(projectId: number): Observable<string> {
-    return this.http.delete<string>(this.url + '?ProjectID=' + projectId);
+    let header = this.getHeader();
+    return this.http.delete<string>(this.url + '?ProjectID=' + projectId, { headers: header });
   }
 
   searchProject(searchBy: string, searchText: string): Observable<Project[]> {
-    return this.http.get<Project[]>(`${this.url}/search/${searchBy}/${searchText}`);
+    let header = this.getHeader();
+    return this.http.get<Project[]>(`${this.url}/search/${searchBy}/${searchText}`,
+     { headers: header });
+  }
+
+  getHeader(): HttpHeaders {
+    let currentUser = { token: '' };
+    let header = new HttpHeaders();
+    header.set("Authorization", "Bearer ");
+
+    if (sessionStorage.currentUser != null) {
+      currentUser = JSON.parse(sessionStorage.currentUser);
+      header = header.set("Authorization", "Bearer " + currentUser.token);
+    }
+
+    return header;
   }
 }
