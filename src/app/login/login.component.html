@@ -19,6 +19,7 @@
                 class="form-control"
                 autofocus="autofocus"
                 placeholder="Username"
+                [(ngModel)]="login.UserName"
               />
             </div>
           </div>
@@ -35,13 +36,14 @@
                 class="form-control"
                 autofocus="autofocus"
                 placeholder="Password"
+                [(ngModel)]="login.Password"
               />
             </div>
           </div>
         </div>
 
         <div class="card-footer text-right">
-          <span class="text-danger">Error if any &nbsp;</span>
+          <span class="text-danger">{{ errorMessage }} &nbsp;</span>
           <button class="btn m-2 text-white logo-color-bg">Login</button>
         </div>
       </div>
