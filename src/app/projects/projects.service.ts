@@ -16,10 +16,10 @@ export class ProjectsService {
   getProjects(): Observable<Project[]> {
 
 
-    let header = this.getHeader();
+    // let header = this.getHeader();
 
 
-    return this.http.get<Project[]>(this.url, { headers: header })
+    return this.http.get<Project[]>(this.url)
       .pipe(
         map(
           (data: Project[]) => {
@@ -35,36 +35,35 @@ export class ProjectsService {
   }
 
   createProject(project: Project): Observable<Project> {
-    let header = this.getHeader();
-    return this.http.post<Project>(this.url, project, { headers: header });
+    // let header = this.getHeader();
+    return this.http.post<Project>(this.url, project);
   }
 
   updateProject(project: Project): Observable<Project> {
-    let header = this.getHeader();
-    return this.http.put<Project>(this.url, project, { headers: header });
+    // let header = this.getHeader();
+    return this.http.put<Project>(this.url, project);
   }
 
   deleteProject(projectId: number): Observable<string> {
-    let header = this.getHeader();
-    return this.http.delete<string>(this.url + '?ProjectID=' + projectId, { headers: header });
+    // let header = this.getHeader();
+    return this.http.delete<string>(this.url + '?ProjectID=' + projectId);
   }
 
   searchProject(searchBy: string, searchText: string): Observable<Project[]> {
-    let header = this.getHeader();
-    return this.http.get<Project[]>(`${this.url}/search/${searchBy}/${searchText}`,
-     { headers: header });
+    // let header = this.getHeader();
+    return this.http.get<Project[]>(`${this.url}/search/${searchBy}/${searchText}`);
   }
 
-  getHeader(): HttpHeaders {
-    let currentUser = { token: '' };
-    let header = new HttpHeaders();
-    header.set("Authorization", "Bearer ");
+  // getHeader(): HttpHeaders {
+  //   let currentUser = { token: '' };
+  //   let header = new HttpHeaders();
+  //   header.set("Authorization", "Bearer ");
 
-    if (sessionStorage.currentUser != null) {
-      currentUser = JSON.parse(sessionStorage.currentUser);
-      header = header.set("Authorization", "Bearer " + currentUser.token);
-    }
+  //   if (sessionStorage.currentUser != null) {
+  //     currentUser = JSON.parse(sessionStorage.currentUser);
+  //     header = header.set("Authorization", "Bearer " + currentUser.token);
+  //   }
 
-    return header;
-  }
+  //   return header;
+  // }
 }
