@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Project } from './project';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,19 @@ export class ProjectsService {
   constructor(private http: HttpClient) { }
 
   getProjects(): Observable<Project[]> {
-    return this.http.get<Project[]>(this.url);
+    return this.http.get<Project[]>(this.url)
+      .pipe(
+        map(
+          (data: Project[]) => {
+
+            for (let index = 0; index < data.length; index++) {
+              data[index].teamSize = data[index].teamSize * 100;
+            }
+            return data;
+          }
+
+        )
+      )
   }
 
   createProject(project: Project): Observable<Project> {
