@@ -37,6 +37,7 @@
                 autofocus="autofocus"
                 placeholder="Password"
                 [(ngModel)]="login.Password"
+                ((keyup.enter)="onLogin()"
               />
             </div>
           </div>
@@ -44,7 +45,9 @@
 
         <div class="card-footer text-right">
           <span class="text-danger">{{ errorMessage }} &nbsp;</span>
-          <button class="btn m-2 text-white logo-color-bg">Login</button>
+          <button class="btn m-2 text-white logo-color-bg" (click)="onLogin()">
+            Login
+          </button>
         </div>
       </div>
     </div>
