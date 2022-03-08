@@ -33,9 +33,6 @@ export class ProjectsComponent implements OnInit {
       .subscribe(
         (response) => {
           this.projects = response;
-        },
-        (error) => {
-          console.log(error)
         }
       )
 
