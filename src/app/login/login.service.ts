@@ -20,12 +20,14 @@ export class LoginService {
       .pipe(
         map((user: any) => {
           this.currentUser = user.userName
+          sessionStorage.currentUser = JSON.stringify(user);
         })
       )
   }
 
   logoutUser() {
     this.currentUser = null;
+    sessionStorage.removeItem('currentUser')
   }
 
   isUserLoggedIn() {
