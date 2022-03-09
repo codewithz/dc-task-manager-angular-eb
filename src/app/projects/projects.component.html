@@ -247,6 +247,7 @@
             </label>
             <div class="col-sm-8">
               <input
+                #newDateOfStart="ngModel"
                 type="date"
                 style="width: 200px"
                 placeholder="Date of Start"
@@ -254,7 +255,31 @@
                 id="dateOfStart"
                 class="form-control"
                 [(ngModel)]="newProject.dateOfStart"
+                required="required"
+                [ngClass]="{
+                  'is-invalid':
+                    newDateOfStart.invalid &&
+                    (newDateOfStart.dirty ||
+                      newDateOfStart.touched ||
+                      newProjectForm.submitted),
+                  'is-valid':
+                    newDateOfStart.valid &&
+                    (newDateOfStart.dirty ||
+                      newDateOfStart.touched ||
+                      newProjectForm.submitted)
+                }"
               />
+              <span
+                class="text-danger"
+                *ngIf="
+                  newDateOfStart.invalid &&
+                  (newDateOfStart.dirty ||
+                    newDateOfStart.touched ||
+                    newProjectForm.submitted) &&
+                  newDateOfStart.errors?.required
+                "
+                >Date of Start cannot be blank</span
+              >
             </div>
           </div>
 
