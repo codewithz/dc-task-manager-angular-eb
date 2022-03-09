@@ -1,4 +1,10 @@
 <h5>Projects</h5>
+<i
+  class="fa fa-circle-o-notch fa-spin text-color"
+  style="font-size: 35px"
+  *ngIf="showLoading"
+>
+</i>
 <div class="row">
   <div class="col-8 mx-auto">
     <div class="form-group form-row">
@@ -173,6 +179,77 @@
                 class="form-control"
                 [(ngModel)]="newProject.teamSize"
               />
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="active" class="col-sm-4 form-label">
+              Is Project Active?
+            </label>
+            <div class="col-sm-8">
+              <div class="form-check">
+                <input
+                  id="checkActive"
+                  type="checkbox"
+                  name="checkActive"
+                  class="form-check-input"
+                  value="true"
+                  [(ngModel)]="newProject.active"
+                />
+                <label for="active" class="form-check-label">Active</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="status" class="col-sm-4 form-label">
+              Project Status
+            </label>
+            <div class="col-sm-8">
+              <div class="form-check form-check-inline">
+                <input
+                  id="statusInForce"
+                  type="radio"
+                  name="radioStatus"
+                  class="form-check-input"
+                  value="In Force"
+                  [(ngModel)]="newProject.status"
+                />
+                <label for="active" class="form-check-label">In Force</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input
+                  id="statusSupport"
+                  type="radio"
+                  name="radioStatus"
+                  class="form-check-input"
+                  value="Support"
+                  [(ngModel)]="newProject.status"
+                />
+                <label for="active" class="form-check-label">Support</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="clientLocation" class="col-sm-4 form-label">
+              Client Location
+            </label>
+            <div class="col-sm-8">
+              <select
+                name="clientLocation"
+                id="clientLocation"
+                class="form-control"
+                [(ngModel)]="newProject.clientLocationID"
+              >
+                <option value="null">Please Select</option>
+                <option
+                  *ngFor="let clientLocation of clientLocations"
+                  [value]="clientLocation.clientLocationID"
+                >
+                  {{ clientLocation.clientLocationName }}
+                </option>
+              </select>
             </div>
           </div>
         </div>

@@ -12,6 +12,8 @@ import { ClientLocationsService } from '../client-location/client-locations.serv
 })
 export class ProjectsComponent implements OnInit {
 
+  showLoading: boolean = true;
+
   projects: Project[] = [];
   clientLocations: ClientLocation[] = [];
 
@@ -28,7 +30,7 @@ export class ProjectsComponent implements OnInit {
   searchBy: string = '';
   searchText: string = '';
 
-  constructor(private service: ProjectsService, 
+  constructor(private service: ProjectsService,
     private clientLocationService: ClientLocationsService) { }
 
   ngOnInit(): void {
@@ -37,6 +39,7 @@ export class ProjectsComponent implements OnInit {
       .subscribe(
         (response) => {
           this.projects = response;
+          this.showLoading = false
         }
       )
 
