@@ -289,6 +289,7 @@
             </label>
             <div class="col-sm-8">
               <input
+                #newTeamSize="ngModel"
                 type="number"
                 style="width: 200px"
                 placeholder="Team Size"
@@ -296,7 +297,33 @@
                 id="teamSize"
                 class="form-control"
                 [(ngModel)]="newProject.teamSize"
+                required="required"
+                maxlength="7"
+                pattern="^[0-9]*$"
+                [ngClass]="{
+                  'is-invalid':
+                    newTeamSize.invalid &&
+                    (newTeamSize.dirty ||
+                      newTeamSize.touched ||
+                      newProjectForm.submitted),
+                  'is-valid':
+                    newTeamSize.valid &&
+                    (newTeamSize.dirty ||
+                      newTeamSize.touched ||
+                      newProjectForm.submitted)
+                }"
               />
+              <span
+                class="text-danger"
+                *ngIf="
+                  newTeamSize.invalid &&
+                  (newTeamSize.dirty ||
+                    newTeamSize.touched ||
+                    newProjectForm.submitted) &&
+                  newTeamSize.errors?.required
+                "
+                >Team Size cannot be blank</span
+              >
             </div>
           </div>
 
