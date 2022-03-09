@@ -398,10 +398,24 @@
             </label>
             <div class="col-sm-8">
               <select
+                #newClientLocationID="ngModel"
                 name="clientLocation"
                 id="clientLocation"
                 class="form-control"
                 [(ngModel)]="newProject.clientLocationID"
+                required="required"
+                [ngClass]="{
+                  'is-invalid':
+                    newClientLocationID.invalid &&
+                    (newClientLocationID.dirty ||
+                      newClientLocationID.touched ||
+                      newProjectForm.submitted),
+                  'is-valid':
+                    newClientLocationID.valid &&
+                    (newClientLocationID.dirty ||
+                      newClientLocationID.touched ||
+                      newProjectForm.submitted)
+                }"
               >
                 <option value="null">Please Select</option>
                 <option
@@ -411,6 +425,17 @@
                   {{ clientLocation.clientLocationName }}
                 </option>
               </select>
+              <span
+                class="text-danger"
+                *ngIf="
+                  newClientLocationID.invalid &&
+                  (newClientLocationID.dirty ||
+                    newClientLocationID.touched ||
+                    newProjectForm.submitted) &&
+                  newClientLocationID.errors?.required
+                "
+                >Please Select Client Location</span
+              >
             </div>
           </div>
         </div>
