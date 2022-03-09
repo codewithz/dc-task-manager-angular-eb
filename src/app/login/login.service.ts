@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Login } from './login';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class LoginService {
 
   private url: string = 'http://localhost:9090/authenticate'
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private jwtHelperService: JwtHelperService) { }
 
   loginUser(login: Login): Observable<any> {
     return this.http.post<any>(this.url, login)
@@ -32,5 +34,15 @@ export class LoginService {
 
   isUserLoggedIn() {
     return this.currentUser != null ? true : false;
+  }
+
+  isAuthenticated(): boolean {
+
+    if (this.jwtHelperService.isTokenExpired()) {
+      return false // Token is Invalid
+    }
+    else {
+      return true; // Token is Valid
+    }
   }
 }

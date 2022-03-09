@@ -5,18 +5,20 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { LoginComponent } from './login/login.component';
+import { CanActivateGuardService } from './guards/can-activate-guard.service';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'about', component: AboutComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'projects', component: ProjectsComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [CanActivateGuardService] },
+  { path: 'projects', component: ProjectsComponent, canActivate: [CanActivateGuardService] },
   { path: "**", component: NotFoundComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
+
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
