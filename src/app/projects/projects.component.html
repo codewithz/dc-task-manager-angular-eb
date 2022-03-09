@@ -353,26 +353,42 @@
             <div class="col-sm-8">
               <div class="form-check form-check-inline">
                 <input
+                  #newStatusInForce="ngModel"
                   id="statusInForce"
                   type="radio"
                   name="radioStatus"
                   class="form-check-input"
                   value="In Force"
                   [(ngModel)]="newProject.status"
+                  required="required"
                 />
                 <label for="active" class="form-check-label">In Force</label>
               </div>
               <div class="form-check form-check-inline">
                 <input
+                  #newStatusSupport="ngModel"
                   id="statusSupport"
                   type="radio"
                   name="radioStatus"
                   class="form-check-input"
                   value="Support"
                   [(ngModel)]="newProject.status"
+                  required="required"
                 />
                 <label for="active" class="form-check-label">Support</label>
               </div>
+
+              <span
+                class="text-danger"
+                *ngIf="
+                  newStatusInForce.invalid &&
+                  (newStatusInForce.dirty ||
+                    newStatusInForce.touched ||
+                    newProjectForm.submitted) &&
+                  newStatusInForce.errors?.required
+                "
+                >Please Select Status</span
+              >
             </div>
           </div>
 
