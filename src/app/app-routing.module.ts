@@ -11,8 +11,22 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'about', component: AboutComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [CanActivateGuardService] },
-  { path: 'projects', component: ProjectsComponent, canActivate: [CanActivateGuardService] },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [CanActivateGuardService],
+    data: {
+      roles: ['Admin']
+    }
+  },
+  {
+    path: 'projects',
+    component: ProjectsComponent,
+    canActivate: [CanActivateGuardService],
+    data: {
+      roles: ['Admin', 'Employee']
+    }
+  },
   { path: "**", component: NotFoundComponent }
 ];
 
