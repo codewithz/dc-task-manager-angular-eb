@@ -102,7 +102,7 @@
 </div>
 
 <!-- Create Project  -->
-<form>
+<form #newProjectForm="ngForm" novalidate="novalidate">
   <div class="modal" role="dialog" id="newProjectModal">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -120,6 +120,7 @@
             </label>
             <div class="col-sm-8">
               <input
+                #newProjectId="ngModel"
                 type="number"
                 style="width: 150px"
                 placeholder="Project ID"
@@ -127,6 +128,20 @@
                 id="projectId"
                 class="form-control"
                 [(ngModel)]="newProject.projectID"
+                required="required"
+                pattern="^[0-9]*$"
+                [ngClass]="{
+                  'is-invalid':
+                    newProjectId.invalid &&
+                    (newProjectId.touched ||
+                      newProjectId.dirty ||
+                      newProjectForm.submitted),
+                  'is-valid':
+                    newProjectId.valid &&
+                    (newProjectId.touched ||
+                      newProjectId.dirty ||
+                      newProjectForm.submitted)
+                }"
               />
             </div>
           </div>
@@ -350,6 +365,77 @@
                 class="form-control"
                 [(ngModel)]="projectToBeEdited.teamSize"
               />
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="active" class="col-sm-4 form-label">
+              Is Project Active?
+            </label>
+            <div class="col-sm-8">
+              <div class="form-check">
+                <input
+                  id="checkActive"
+                  type="checkbox"
+                  name="checkActive"
+                  class="form-check-input"
+                  value="true"
+                  [(ngModel)]="projectToBeEdited.active"
+                />
+                <label for="active" class="form-check-label">Active</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="status" class="col-sm-4 form-label">
+              Project Status
+            </label>
+            <div class="col-sm-8">
+              <div class="form-check form-check-inline">
+                <input
+                  id="statusInForce"
+                  type="radio"
+                  name="radioStatus"
+                  class="form-check-input"
+                  value="In Force"
+                  [(ngModel)]="projectToBeEdited.status"
+                />
+                <label for="active" class="form-check-label">In Force</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input
+                  id="statusSupport"
+                  type="radio"
+                  name="radioStatus"
+                  class="form-check-input"
+                  value="Support"
+                  [(ngModel)]="projectToBeEdited.status"
+                />
+                <label for="active" class="form-check-label">Support</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="clientLocation" class="col-sm-4 form-label">
+              Client Location
+            </label>
+            <div class="col-sm-8">
+              <select
+                name="clientLocation"
+                id="clientLocation"
+                class="form-control"
+                [(ngModel)]="projectToBeEdited.clientLocationID"
+              >
+                <option value="null">Please Select</option>
+                <option
+                  *ngFor="let clientLocation of clientLocations"
+                  [value]="clientLocation.clientLocationID"
+                >
+                  {{ clientLocation.clientLocationName }}
+                </option>
+              </select>
             </div>
           </div>
         </div>
