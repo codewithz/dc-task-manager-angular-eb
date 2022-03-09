@@ -176,6 +176,7 @@
             </label>
             <div class="col-sm-8">
               <input
+                #newProjectName="ngModel"
                 type="text"
                 style="width: 200px"
                 placeholder="Project Name"
@@ -183,7 +184,60 @@
                 id="projectName"
                 class="form-control"
                 [(ngModel)]="newProject.projectName"
+                required="required"
+                minlength="3"
+                maxlength="40"
+                pattern="^[A-Za-z0-9 ./-]*$"
+                [ngClass]="{
+                  'is-invalid':
+                    newProjectName.invalid &&
+                    (newProjectName.touched ||
+                      newProjectName.dirty ||
+                      newProjectForm.submitted),
+                  'is-valid':
+                    newProjectName.valid &&
+                    (newProjectName.touched ||
+                      newProjectName.dirty ||
+                      newProjectForm.submitted)
+                }"
               />
+              <span
+                class="text-danger"
+                *ngIf="
+                  newProjectName.invalid &&
+                  (newProjectName.touched ||
+                    newProjectName.dirty ||
+                    newProjectForm.submitted) &&
+                  newProjectName.errors?.required
+                "
+              >
+                Project Name cannot be blank</span
+              >
+              <span
+                class="text-danger"
+                *ngIf="
+                  newProjectName.invalid &&
+                  (newProjectName.touched ||
+                    newProjectName.dirty ||
+                    newProjectForm.submitted) &&
+                  newProjectName.errors?.pattern
+                "
+              >
+                Project Name can only have alphabets, numbers, period, hyphen,
+                slash and space</span
+              >
+              <span
+                class="text-danger"
+                *ngIf="
+                  newProjectName.invalid &&
+                  (newProjectName.touched ||
+                    newProjectName.dirty ||
+                    newProjectForm.submitted) &&
+                  newProjectName.errors?.minlength
+                "
+              >
+                Project Name should of min 3 characters</span
+              >
             </div>
           </div>
 
