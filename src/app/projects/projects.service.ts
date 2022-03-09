@@ -24,9 +24,9 @@ export class ProjectsService {
         map(
           (data: Project[]) => {
 
-            for (let index = 0; index < data.length; index++) {
-              data[index].teamSize = data[index].teamSize * 100;
-            }
+            // for (let index = 0; index < data.length; index++) {
+            //   data[index].teamSize = data[index].teamSize * 100;
+            // }
             return data;
           }
 
