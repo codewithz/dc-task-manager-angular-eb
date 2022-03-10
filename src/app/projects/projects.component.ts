@@ -6,6 +6,8 @@ import { ProjectsService } from './projects.service';
 import { ClientLocationsService } from '../client-location/client-locations.service';
 import { NgForm } from '@angular/forms';
 
+import * as $ from 'jquery'
+
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
@@ -72,8 +74,9 @@ export class ProjectsComponent implements OnInit {
             this.projects.push(createdProject);
 
             // Reset the form 
-
             this.newProject = new Project();
+            // Make the JQuery Call 
+            $('#newProjectCancel').trigger('click')
           },
           (error) => {
             console.log(error)

@@ -461,13 +461,17 @@
         </div>
 
         <div class="modal-footer">
-          <button class="btn btn-sm m-2 button-color" data-dismiss="modal">
+          <button
+            class="btn btn-sm m-2 button-color"
+            data-dismiss="modal"
+            id="newProjectCancel"
+          >
             Cancel
           </button>
           <button
             class="btn btn-sm m-2 button-color"
-            data-dismiss="modal"
             (click)="onSave()"
+            [disabled]="newProjectForm.invalid"
           >
             Save
           </button>
