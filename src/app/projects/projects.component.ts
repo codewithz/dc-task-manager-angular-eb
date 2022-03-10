@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ClientLocation } from '../client-location/client-location';
 
 import { Project } from './project';
 import { ProjectsService } from './projects.service';
 import { ClientLocationsService } from '../client-location/client-locations.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-projects',
@@ -30,6 +31,8 @@ export class ProjectsComponent implements OnInit {
   searchBy: string = '';
   searchText: string = '';
 
+  @ViewChild("newProjectForm") newForm: NgForm | any;
+
   constructor(private service: ProjectsService,
     private clientLocationService: ClientLocationsService) { }
 
@@ -50,6 +53,11 @@ export class ProjectsComponent implements OnInit {
         }
       )
 
+  }
+
+  onCreateProjectClicked() {
+    this.newForm.resetForm();
+    // This will reset the form including the validation status
   }
 
   onSave() {
