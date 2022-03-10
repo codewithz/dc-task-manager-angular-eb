@@ -61,20 +61,25 @@ export class ProjectsComponent implements OnInit {
   }
 
   onSave() {
-    this.service.createProject(this.newProject)
-      .subscribe(
-        (response) => {
-          let createdProject: Project = response;
-          this.projects.push(createdProject);
-
-          // Reset the form 
-
-          this.newProject = new Project();
-        },
-        (error) => {
-          console.log(error)
-        }
+    if (this.newForm.valid) {
+      this.newProject.clientLocation = this.clientLocations.find(
+        (client) => client.clientLocationID == this.newProject.clientLocationID
       )
+      this.service.createProject(this.newProject)
+        .subscribe(
+          (response) => {
+            let createdProject: Project = response;
+            this.projects.push(createdProject);
+
+            // Reset the form 
+
+            this.newProject = new Project();
+          },
+          (error) => {
+            console.log(error)
+          }
+        )
+    }
   }
 
   onEditClicked(event: any, index: number) {
