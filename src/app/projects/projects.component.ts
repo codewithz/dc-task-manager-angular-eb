@@ -34,6 +34,7 @@ export class ProjectsComponent implements OnInit {
   searchText: string = '';
 
   @ViewChild("newProjectForm") newForm: NgForm | any;
+  @ViewChild("editProjectForm") editForm: NgForm | any;
 
   constructor(private service: ProjectsService,
     private clientLocationService: ClientLocationsService) { }
@@ -92,15 +93,22 @@ export class ProjectsComponent implements OnInit {
   }
 
   onUpdate() {
-    this.service.updateProject(this.projectToBeEdited)
-      .subscribe(
-        (response) => {
-          this.projects[this.indexOfProjectEdited] = response;
-        },
-        (error) => {
-          console.log(error)
-        }
+    if (this.editForm.valid) {
+      this.projectToBeEdited.clientLocation = this.clientLocations.find(
+        (client) => client.clientLocationID == this.projectToBeEdited.clientLocationID
       )
+      this.service.updateProject(this.projectToBeEdited)
+        .subscribe(
+          (response) => {
+            this.projects[this.indexOfProjectEdited] = response;
+
+            $('#editProjectCancel').trigger('click');
+          },
+          (error) => {
+            console.log(error)
+          }
+        )
+    }
   }
 
   onDeleteClicked(index: number) {

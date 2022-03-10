@@ -839,13 +839,17 @@
         </div>
 
         <div class="modal-footer">
-          <button class="btn btn-sm m-2 button-color" data-dismiss="modal">
+          <button
+            class="btn btn-sm m-2 button-color"
+            data-dismiss="modal"
+            id="editProjectCancel"
+          >
             Cancel
           </button>
           <button
             class="btn btn-sm m-2 button-color"
-            data-dismiss="modal"
             (click)="onUpdate()"
+            [disabled]="editProjectForm.invalid"
           >
             Update
           </button>
