@@ -300,6 +300,7 @@
             <div class="col-sm-8">
               <input
                 #newTeamSize="ngModel"
+                appTeamSizeValidator
                 type="number"
                 style="width: 200px"
                 placeholder="Team Size"
@@ -333,6 +334,17 @@
                   newTeamSize.errors?.required
                 "
                 >Team Size cannot be blank</span
+              >
+              <span
+                class="text-danger"
+                *ngIf="
+                  newTeamSize.invalid &&
+                  (newTeamSize.dirty ||
+                    newTeamSize.touched ||
+                    newProjectForm.submitted) &&
+                  newTeamSize.errors?.divisible
+                "
+                >Team Size has to be in multiple of 5</span
               >
             </div>
           </div>
