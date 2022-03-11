@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Country } from '../countries/country';
+import { CountriesService } from './../countries/countries.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -12,9 +14,21 @@ export class SignUpComponent implements OnInit {
 
   genders = ['male', 'female']
 
-  constructor() { }
+  countries: Country[] = []
+
+  constructor(private countriesService: CountriesService) { }
 
   ngOnInit(): void {
+
+    this.countriesService.getCountries()
+      .subscribe(
+        (response) => {
+          this.countries = response;
+          console.log(this.countries)
+        }
+      )
+
+
     this.signUpForm = new FormGroup({
       firstName: new FormControl(null),
       lastName: new FormControl(null),
