@@ -138,6 +138,15 @@
         </form>
         {{ signUpForm.value | json }}
       </div>
+
+      <div class="card-footer">
+        <button
+          class="btn button-color float-right"
+          (click)="onCreateAccountClicked()"
+        >
+          Create Account
+        </button>
+      </div>
     </div>
   </div>
 </div>

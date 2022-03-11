@@ -42,9 +42,25 @@ export class SignUpComponent implements OnInit {
 
     this.signUpForm.valueChanges.subscribe(
       (values: any) => {
-        console.log(values)
+        // console.log(values)
       }
     )
+  }
+
+  onCreateAccountClicked() {
+    // 1. setValue
+    this.signUpForm.setValue({
+      firstName: 'Zartab',
+      lastName: 'Nakhwa',
+      email: 'zartab@codewithz.com',
+      mobile: '7715036251',
+      dateOfBirth: '1990-12-13',
+      gender: 'male',
+      countryID: 300
+    })
+
+    // 2.patchValue
+    // 3.reset
   }
 
 }
