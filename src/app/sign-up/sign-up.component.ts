@@ -39,6 +39,12 @@ export class SignUpComponent implements OnInit {
       countryID: new FormControl(null)
 
     })
+
+    this.signUpForm.valueChanges.subscribe(
+      (values: any) => {
+        console.log(values)
+      }
+    )
   }
 
 }
