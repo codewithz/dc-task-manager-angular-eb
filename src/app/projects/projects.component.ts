@@ -8,6 +8,7 @@ import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr'
 
 import * as $ from 'jquery'
+import { AlertService } from './../alert/alert.service';
 
 @Component({
   selector: 'app-projects',
@@ -39,7 +40,7 @@ export class ProjectsComponent implements OnInit {
 
   constructor(private service: ProjectsService,
     private clientLocationService: ClientLocationsService,
-    private toaster: ToastrService) { }
+    private alertService: AlertService) { }
 
   ngOnInit(): void {
 
@@ -79,7 +80,7 @@ export class ProjectsComponent implements OnInit {
             // Reset the form 
             this.newProject = new Project();
             //Showing the Toast
-            this.toaster.success("Project Addition", "Success")
+            this.alertService.showSuccess("Project Addition", "Success")
             // Make the JQuery Call 
             $('#newProjectCancel').trigger('click')
           },
@@ -105,7 +106,7 @@ export class ProjectsComponent implements OnInit {
         .subscribe(
           (response) => {
             this.projects[this.indexOfProjectEdited] = response;
-
+            this.alertService.showInfo("Project Updated", "Success")
             $('#editProjectCancel').trigger('click');
           },
           (error) => {
