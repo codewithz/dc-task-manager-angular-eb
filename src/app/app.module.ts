@@ -20,6 +20,7 @@ import { JwtUnauthorizedService } from './interceptors/jwt-unauthorized.service'
 import { TeamSizeValidatorDirective } from './directives/team-size-validator.directive';
 import { ClientLocationStatusValidatorDirective } from './directives/client-location-status-validator.directive';
 import { ProjectIdUniqueValidatorDirective } from './directives/project-id-unique-validator.directive';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 
 
@@ -34,6 +35,7 @@ import { ProjectIdUniqueValidatorDirective } from './directives/project-id-uniqu
     TeamSizeValidatorDirective,
     ClientLocationStatusValidatorDirective,
     ProjectIdUniqueValidatorDirective,
+    SignUpComponent,
 
 
   ],
