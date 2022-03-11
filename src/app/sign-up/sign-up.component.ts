@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { Country } from '../countries/country';
 import { CountriesService } from './../countries/countries.service';
 
@@ -39,7 +39,8 @@ export class SignUpComponent implements OnInit {
       mobile: new FormControl(null),
       dateOfBirth: new FormControl(null),
       gender: new FormControl(null),
-      countryID: new FormControl(null)
+      countryID: new FormControl(null),
+      skills: new FormArray([])
 
     })
 
