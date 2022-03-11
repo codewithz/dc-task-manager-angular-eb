@@ -6,7 +6,7 @@
       </div>
 
       <div class="card-body">
-        <form>
+        <form [formGroup]="signUpForm">
           <!-- first name starts here -->
           <div class="form-group form-row">
             <label for="firstname" class="col-md-4 col-form-label">
@@ -19,6 +19,7 @@
                 id="firstName"
                 class="form-control"
                 placeholder="First Name"
+                formControlName="firstName"
               />
             </div>
           </div>
@@ -35,6 +36,7 @@
                 id="lastName"
                 class="form-control"
                 placeholder="Last Name"
+                formControlName="lastName"
               />
             </div>
           </div>
@@ -49,6 +51,7 @@
                 id="email"
                 class="form-control"
                 placeholder="Email"
+                formControlName="email"
               />
             </div>
           </div>
@@ -65,6 +68,7 @@
                 id="mobile"
                 class="form-control"
                 placeholder="Mobile"
+                formControlName="mobile"
               />
             </div>
           </div>
@@ -80,6 +84,7 @@
                 name="dateOfBirth"
                 id="dateOfBirth"
                 class="form-control"
+                formControlName="dateOfBirth"
               />
             </div>
           </div>
