@@ -9,3 +9,10 @@ npm i popper.js@1.16
 npm i @auth0/angular-jwt
 
 npm i -D @types/jquery
+
+----- Toastr--------------
+
+npm install ngx-toastr --save
+
+
+npm install @angular/animations --save

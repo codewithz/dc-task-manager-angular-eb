@@ -5,6 +5,7 @@ import { Project } from './project';
 import { ProjectsService } from './projects.service';
 import { ClientLocationsService } from '../client-location/client-locations.service';
 import { NgForm } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr'
 
 import * as $ from 'jquery'
 
@@ -37,7 +38,8 @@ export class ProjectsComponent implements OnInit {
   @ViewChild("editProjectForm") editForm: NgForm | any;
 
   constructor(private service: ProjectsService,
-    private clientLocationService: ClientLocationsService) { }
+    private clientLocationService: ClientLocationsService,
+    private toaster: ToastrService) { }
 
   ngOnInit(): void {
 
@@ -76,6 +78,8 @@ export class ProjectsComponent implements OnInit {
 
             // Reset the form 
             this.newProject = new Project();
+            //Showing the Toast
+            this.toaster.success("Project Addition", "Success")
             // Make the JQuery Call 
             $('#newProjectCancel').trigger('click')
           },
