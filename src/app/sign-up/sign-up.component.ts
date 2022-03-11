@@ -60,13 +60,14 @@ export class SignUpComponent implements OnInit {
     // })
 
     // 2.patchValue
-    this.signUpForm.patchValue({
-      firstName: 'Zartab',
-      lastName: 'Nakhwa',
-      email: 'zartab@codewithz.com',
+    // this.signUpForm.patchValue({
+    //   firstName: 'Zartab',
+    //   lastName: 'Nakhwa',
+    //   email: 'zartab@codewithz.com',
 
-    })
+    // })
     // 3.reset
+    this.signUpForm.reset();
   }
 
 }
