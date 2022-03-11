@@ -441,10 +441,15 @@
                 required="required"
                 [ngClass]="{
                   'is-invalid':
-                    newClientLocationID.invalid &&
-                    (newClientLocationID.dirty ||
-                      newClientLocationID.touched ||
-                      newProjectForm.submitted),
+                    (newClientLocationID.invalid &&
+                      (newClientLocationID.dirty ||
+                        newClientLocationID.touched ||
+                        newProjectForm.submitted)) ||
+                    (newProjectForm.invalid &&
+                      (newProjectForm.dirty ||
+                        newProjectForm.touched ||
+                        newProjectForm.submitted) &&
+                      newProjectForm.errors?.clientLocation),
                   'is-valid':
                     newClientLocationID.valid &&
                     (newClientLocationID.dirty ||
