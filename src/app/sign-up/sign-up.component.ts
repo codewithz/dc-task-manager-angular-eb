@@ -86,4 +86,10 @@ export class SignUpComponent implements OnInit {
     skillsFormArray.push(skillFormGroup);
   }
 
+  onSkillRemove(index: number) {
+    let skillsFormArray = <FormArray>this.signUpForm.get('skills');
+    skillsFormArray.removeAt(index)
+  }
+
+
 }
