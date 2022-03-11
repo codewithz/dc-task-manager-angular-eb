@@ -74,4 +74,16 @@ export class SignUpComponent implements OnInit {
     this.signUpForm.reset();
   }
 
+  onAddSkillClicked() {
+
+    const skillFormGroup = new FormGroup({
+      skillName: new FormControl(null),
+      level: new FormControl(null),
+    })
+
+    let skillsFormArray = <FormArray>this.signUpForm.get('skills');
+
+    skillsFormArray.push(skillFormGroup);
+  }
+
 }
