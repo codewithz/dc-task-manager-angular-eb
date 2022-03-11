@@ -73,7 +73,7 @@
             </div>
           </div>
           <!-- email ends here -->
-          <!-- dateOfBrith starts here -->
+          <!-- dateOfBirth starts here -->
           <div class="form-group form-row">
             <label for="dateOfBirth" class="col-md-4 col-form-label">
               Date Of Brith:
@@ -88,8 +88,38 @@
               />
             </div>
           </div>
-          <!-- email ends here -->
+          <!-- dateOfBirth ends here -->
+          <!-- gender starts here -->
+          <div class="form-group form-row">
+            <label for="gender" class="col-md-4 col-form-label">
+              Gender:
+            </label>
+            <div class="form-check-label form-check-inline">
+              <input
+                type="radio"
+                name="gender"
+                id="male"
+                class="form-check-input"
+                formControlName="gender"
+                value="male"
+              />
+              <label for="male" class="form-check-label">Male</label>
+            </div>
+            <div class="form-check-label form-check-inline">
+              <input
+                type="radio"
+                name="gender"
+                id="female"
+                class="form-check-input"
+                formControlName="gender"
+                value="female"
+              />
+              <label for="female" class="form-check-label">Female</label>
+            </div>
+          </div>
+          <!-- gender ends here -->
         </form>
+        {{ signUpForm.value | json }}
       </div>
     </div>
   </div>
