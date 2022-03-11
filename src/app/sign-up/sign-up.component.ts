@@ -10,6 +10,8 @@ export class SignUpComponent implements OnInit {
 
   signUpForm: FormGroup | any;
 
+  genders = ['male', 'female']
+
   constructor() { }
 
   ngOnInit(): void {
