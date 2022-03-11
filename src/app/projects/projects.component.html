@@ -103,7 +103,11 @@
 </div>
 
 <!-- Create Project  -->
-<form #newProjectForm="ngForm" novalidate="novalidate">
+<form
+  #newProjectForm="ngForm"
+  novalidate="novalidate"
+  appClientLocationStatusValidator
+>
   <div class="modal" role="dialog" id="newProjectModal">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -467,6 +471,17 @@
                 "
                 >Please Select Client Location</span
               >
+              <span
+                class="text-danger"
+                *ngIf="
+                  newProjectForm.invalid &&
+                  (newProjectForm.dirty ||
+                    newProjectForm.touched ||
+                    newProjectForm.submitted) &&
+                  newProjectForm.errors?.clientLocation
+                "
+                >London cannot have support job</span
+              >
             </div>
           </div>
           <!-- Project  Client Location ends here  -->
@@ -495,7 +510,11 @@
 <!-- Create Project End here -->
 
 <!-- Edit Project  -->
-<form #editProjectForm="ngForm" novalidate="novalidate">
+<form
+  #editProjectForm="ngForm"
+  novalidate="novalidate"
+  appClientLocationStatusValidator
+>
   <div class="modal" role="dialog" id="editProjectModal">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -844,6 +863,17 @@
                   editClientLocationID.errors?.required
                 "
                 >Please Select Client Location</span
+              >
+              <span
+                class="text-danger"
+                *ngIf="
+                  editProjectForm.invalid &&
+                  (editProjectForm.dirty ||
+                    editProjectForm.touched ||
+                    editProjectForm.submitted) &&
+                  editProjectForm.errors?.clientLocation
+                "
+                >London cannot have support job</span
               >
             </div>
           </div>
