@@ -34,6 +34,10 @@ export class ProjectsService {
       )
   }
 
+  getProjectById(projectId: number): Observable<Project> {
+    return this.http.get<Project>(`${this.url}/searchbyprojectid/${projectId}`)
+  }
+
   createProject(project: Project): Observable<Project> {
     // let header = this.getHeader();
     return this.http.post<Project>(this.url, project);
