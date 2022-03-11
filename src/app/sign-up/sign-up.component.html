@@ -140,17 +140,49 @@
             <label for="skills" class="col-md-4 col-form-label">
               Skills:
             </label>
-            <div class="col-md-8">
+            <div class="col-md-8" formArrayName="skills">
               <div
                 *ngFor="
                   let skill of signUpForm.get('skills').controls;
                   index as i
                 "
+                [formGroupName]="i"
               >
-                {{ i }}
+                <div class="row">
+                  <div class="col-4">
+                    <input
+                      type="text"
+                      name="skillName"
+                      id="skillName"
+                      class="form-control"
+                      formControlName="skillName"
+                      placeholder="Skill Name"
+                    />
+                  </div>
+                  <div class="col-4">
+                    <select
+                      name="level"
+                      id="level"
+                      class="form-control"
+                      formControlName="level"
+                    >
+                      <option value="null">Please Select</option>
+                      <option value="Beginners">Beginners</option>
+                      <option value="Intermediate">Intermediate</option>
+                      <option value="Professional">Professional</option>
+                      <option value="Expert">Expert</option>
+                    </select>
+                  </div>
+                  <div class="col-3"></div>
+                </div>
               </div>
             </div>
-            <button class="btn btn-sm m-2 btn-warning" (click)="onAddSkillClicked()">Add Skill</button>
+            <button
+              class="btn btn-sm m-2 btn-warning"
+              (click)="onAddSkillClicked()"
+            >
+              Add Skill
+            </button>
           </div>
           <!-- Skills ends here -->
         </form>
