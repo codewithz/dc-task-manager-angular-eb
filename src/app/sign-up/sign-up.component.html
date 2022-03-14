@@ -20,6 +20,18 @@
                 class="form-control"
                 placeholder="First Name"
                 formControlName="firstName"
+                [ngClass]="{
+                  'is-invalid':
+                    signUpForm.get('personalDetails.firstName').invalid &&
+                    (signUpForm.get('personalDetails.firstName').dirty ||
+                      signUpForm.get('personalDetails.firstName').touched ||
+                      signUpForm.submitted),
+                  'is-valid':
+                    signUpForm.get('personalDetails.firstName').valid &&
+                    (signUpForm.get('personalDetails.firstName').dirty ||
+                      signUpForm.get('personalDetails.firstName').touched ||
+                      signUpForm.submitted)
+                }"
               />
             </div>
           </div>
@@ -37,6 +49,18 @@
                 class="form-control"
                 placeholder="Last Name"
                 formControlName="lastName"
+                [ngClass]="{
+                  'is-invalid':
+                    signUpForm.get('personalDetails.lastName').invalid &&
+                    (signUpForm.get('personalDetails.lastName').dirty ||
+                      signUpForm.get('personalDetails.lastName').touched ||
+                      signUpForm.submitted),
+                  'is-valid':
+                    signUpForm.get('personalDetails.lastName').valid &&
+                    (signUpForm.get('personalDetails.lastName').dirty ||
+                      signUpForm.get('personalDetails.lastName').touched ||
+                      signUpForm.submitted)
+                }"
               />
             </div>
           </div>
@@ -52,6 +76,18 @@
                 class="form-control"
                 placeholder="Email"
                 formControlName="email"
+                [ngClass]="{
+                  'is-invalid':
+                    signUpForm.get('email').invalid &&
+                    (signUpForm.get('email').dirty ||
+                      signUpForm.get('email').touched ||
+                      signUpForm.submitted),
+                  'is-valid':
+                    signUpForm.get('email').valid &&
+                    (signUpForm.get('email').dirty ||
+                      signUpForm.get('email').touched ||
+                      signUpForm.submitted)
+                }"
               />
             </div>
           </div>
@@ -69,6 +105,18 @@
                 class="form-control"
                 placeholder="Mobile"
                 formControlName="mobile"
+                [ngClass]="{
+                  'is-invalid':
+                    signUpForm.get('mobile').invalid &&
+                    (signUpForm.get('mobile').dirty ||
+                      signUpForm.get('mobile').touched ||
+                      signUpForm.submitted),
+                  'is-valid':
+                    signUpForm.get('mobile').valid &&
+                    (signUpForm.get('mobile').dirty ||
+                      signUpForm.get('mobile').touched ||
+                      signUpForm.submitted)
+                }"
               />
             </div>
           </div>
@@ -85,6 +133,18 @@
                 id="dateOfBirth"
                 class="form-control"
                 formControlName="dateOfBirth"
+                [ngClass]="{
+                  'is-invalid':
+                    signUpForm.get('dateOfBirth').invalid &&
+                    (signUpForm.get('dateOfBirth').dirty ||
+                      signUpForm.get('dateOfBirth').touched ||
+                      signUpForm.submitted),
+                  'is-valid':
+                    signUpForm.get('dateOfBirth').valid &&
+                    (signUpForm.get('dateOfBirth').dirty ||
+                      signUpForm.get('dateOfBirth').touched ||
+                      signUpForm.submitted)
+                }"
               />
             </div>
           </div>
@@ -123,6 +183,18 @@
                 id="countryID"
                 class="form-control"
                 formControlName="countryID"
+                [ngClass]="{
+                  'is-invalid':
+                    signUpForm.get('countryID').invalid &&
+                    (signUpForm.get('countryID').dirty ||
+                      signUpForm.get('countryID').touched ||
+                      signUpForm.submitted),
+                  'is-valid':
+                    signUpForm.get('countryID').valid &&
+                    (signUpForm.get('countryID').dirty ||
+                      signUpForm.get('countryID').touched ||
+                      signUpForm.submitted)
+                }"
               >
                 <option value="null">Please Select</option>
                 <option
@@ -157,6 +229,18 @@
                       class="form-control"
                       formControlName="skillName"
                       placeholder="Skill Name"
+                      [ngClass]="{
+                        'is-invalid':
+                          skill.get('skillName').invalid &&
+                          (skill.get('skillName').dirty ||
+                            skill.get('skillName').touched ||
+                            signUpForm.submitted),
+                        'is-valid':
+                          skill.get('skillName').valid &&
+                          (skill.get('skillName').dirty ||
+                            skill.get('skillName').touched ||
+                            signUpForm.submitted)
+                      }"
                     />
                   </div>
                   <div class="col-4">
@@ -165,6 +249,18 @@
                       id="level"
                       class="form-control"
                       formControlName="level"
+                      [ngClass]="{
+                        'is-invalid':
+                          skill.get('level').invalid &&
+                          (skill.get('level').dirty ||
+                            skill.get('level').touched ||
+                            signUpForm.submitted),
+                        'is-valid':
+                          skill.get('level').valid &&
+                          (skill.get('level').dirty ||
+                            skill.get('level').touched ||
+                            signUpForm.submitted)
+                      }"
                     >
                       <option value="null">Please Select</option>
                       <option value="Beginners">Beginners</option>
