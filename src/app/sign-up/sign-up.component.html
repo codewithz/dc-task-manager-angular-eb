@@ -248,6 +248,17 @@
                 "
                 >Date of Birth can't be blank</span
               >
+              <span
+                class="text-danger"
+                *ngIf="
+                  signUpForm.get('dateOfBirth').invalid &&
+                  (signUpForm.get('dateOfBirth').dirty ||
+                    signUpForm.get('dateOfBirth').touched ||
+                    signUpForm.submitted) &&
+                  signUpForm.get('dateOfBirth').errors?.minAge
+                "
+                >Your age is below the allowed years</span
+              >
             </div>
           </div>
           <!-- dateOfBirth ends here -->

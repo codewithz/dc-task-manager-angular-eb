@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Country } from '../countries/country';
 import { CountriesService } from './../countries/countries.service';
+import { CustomSignUpValidatorService } from './../validators/custom-sign-up-validator.service';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class SignUpComponent implements OnInit {
 
   countries: Country[] = []
 
-  constructor(private countriesService: CountriesService) { }
+  constructor(private countriesService: CountriesService, 
+    private customValidator: CustomSignUpValidatorService) { }
 
   ngOnInit(): void {
 
@@ -38,8 +40,9 @@ export class SignUpComponent implements OnInit {
       }),
       email: new FormControl(null, [Validators.required, Validators.email]),
       mobile: new FormControl(null,
-         [Validators.required, Validators.pattern(/^[789]\d{9}$/)]),
-      dateOfBirth: new FormControl(null, [Validators.required]),
+        [Validators.required, Validators.pattern(/^[789]\d{9}$/)]),
+      dateOfBirth: new FormControl(null, [Validators.required,
+      this.customValidator.minimumAgeValidator(18)]),
       gender: new FormControl(null, [Validators.required]),
       countryID: new FormControl(null, [Validators.required]),
       skills: new FormArray([])
