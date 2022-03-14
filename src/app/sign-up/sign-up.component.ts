@@ -49,6 +49,10 @@ export class SignUpComponent implements OnInit {
       countryID: new FormControl(null, [Validators.required]),
       skills: new FormArray([])
 
+    }, {
+      validators: [
+        this.customValidator.comparePasswordValidator('confirmPassword', 'password')
+      ]
     })
 
     this.signUpForm.valueChanges.subscribe(

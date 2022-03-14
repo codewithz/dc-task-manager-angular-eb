@@ -207,7 +207,7 @@
             </label>
             <div class="col-md-8">
               <input
-                type="confirmPassword"
+                type="password"
                 name="confirmPassword"
                 id="confirmPassword"
                 class="form-control"
@@ -236,6 +236,17 @@
                   signUpForm.get('confirmPassword').errors?.required
                 "
                 >Confirm Password can't be blank</span
+              >
+              <span
+                class="text-danger"
+                *ngIf="
+                  signUpForm.get('confirmPassword').invalid &&
+                  (signUpForm.get('confirmPassword').dirty ||
+                    signUpForm.get('confirmPassword').touched ||
+                    signUpForm.submitted) &&
+                  signUpForm.get('confirmPassword').errors?.comparePassword
+                "
+                >Password doesn't match</span
               >
             </div>
           </div>
