@@ -18,7 +18,7 @@ export class SignUpComponent implements OnInit {
 
   countries: Country[] = []
 
-  constructor(private countriesService: CountriesService, 
+  constructor(private countriesService: CountriesService,
     private customValidator: CustomSignUpValidatorService) { }
 
   ngOnInit(): void {
@@ -41,6 +41,8 @@ export class SignUpComponent implements OnInit {
       email: new FormControl(null, [Validators.required, Validators.email]),
       mobile: new FormControl(null,
         [Validators.required, Validators.pattern(/^[789]\d{9}$/)]),
+      password: new FormControl(null, [Validators.required]),
+      confirmPassword: new FormControl(null, [Validators.required]),
       dateOfBirth: new FormControl(null, [Validators.required,
       this.customValidator.minimumAgeValidator(18)]),
       gender: new FormControl(null, [Validators.required]),
