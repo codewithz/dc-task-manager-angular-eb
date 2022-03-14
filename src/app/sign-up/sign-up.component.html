@@ -157,6 +157,17 @@
                 "
                 >Email is invalid</span
               >
+              <span
+                class="text-danger"
+                *ngIf="
+                  signUpForm.get('email').invalid &&
+                  (signUpForm.get('email').dirty ||
+                    signUpForm.get('email').touched ||
+                    signUpForm.submitted) &&
+                  signUpForm.get('email').errors?.uniqueEmail
+                "
+                >Email already exists</span
+              >
             </div>
           </div>
           <!-- email ends here -->
