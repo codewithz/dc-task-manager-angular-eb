@@ -9,6 +9,10 @@ import { ToastrService } from 'ngx-toastr'
 
 import * as $ from 'jquery'
 import { AlertService } from './../alert/alert.service';
+import { RootReducerState } from '../reducers';
+import { Store } from '@ngrx/store';
+import { ProjectsListRequestedAction, ProjectsListSuccessAction } from './../actions/projects-action';
+
 
 @Component({
   selector: 'app-projects',
@@ -40,7 +44,9 @@ export class ProjectsComponent implements OnInit {
 
   constructor(private service: ProjectsService,
     private clientLocationService: ClientLocationsService,
-    private alertService: AlertService) { }
+    private alertService: AlertService,
+    private store: Store<RootReducerState>
+  ) { }
 
   ngOnInit(): void {
 
@@ -51,18 +57,20 @@ export class ProjectsComponent implements OnInit {
   }
 
   getProjects() {
+
+    this.store.dispatch(new ProjectsListRequestedAction());
+
     this.service.getProjects()
       .subscribe(
         (response) => {
           this.projects = response;
+          this.store.dispatch(new ProjectsListSuccessAction({ data: response }))
           this.showLoading = false
         }
       )
-
   }
 
   getClientLocations() {
-
     this.clientLocationService.getClientLocations()
       .subscribe(
         (response) => {
