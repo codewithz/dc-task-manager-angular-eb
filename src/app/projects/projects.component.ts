@@ -44,6 +44,13 @@ export class ProjectsComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.getProjects();
+    this.getClientLocations();
+
+
+  }
+
+  getProjects() {
     this.service.getProjects()
       .subscribe(
         (response) => {
@@ -52,13 +59,16 @@ export class ProjectsComponent implements OnInit {
         }
       )
 
+  }
+
+  getClientLocations() {
+
     this.clientLocationService.getClientLocations()
       .subscribe(
         (response) => {
           this.clientLocations = response
         }
       )
-
   }
 
   onCreateProjectClicked() {
