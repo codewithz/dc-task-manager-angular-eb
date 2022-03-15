@@ -24,6 +24,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { ProjectComponent } from './project/project.component';
 import { StoreModule } from '@ngrx/store';
 import { rootReducer } from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
 
@@ -62,6 +63,7 @@ import { rootReducer } from './reducers';
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(),// ToastrModule added
     StoreModule.forRoot(rootReducer),
+    StoreDevtoolsModule.instrument()
   ],
   providers: [
     {
