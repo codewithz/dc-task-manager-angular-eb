@@ -21,6 +21,7 @@ import { TeamSizeValidatorDirective } from './directives/team-size-validator.dir
 import { ClientLocationStatusValidatorDirective } from './directives/client-location-status-validator.directive';
 import { ProjectIdUniqueValidatorDirective } from './directives/project-id-unique-validator.directive';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { ProjectComponent } from './project/project.component';
 
 
 
@@ -36,6 +37,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     ClientLocationStatusValidatorDirective,
     ProjectIdUniqueValidatorDirective,
     SignUpComponent,
+    ProjectComponent,
 
 
   ],
