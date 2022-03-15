@@ -23,6 +23,7 @@ import { ProjectIdUniqueValidatorDirective } from './directives/project-id-uniqu
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ProjectComponent } from './project/project.component';
 import { StoreModule } from '@ngrx/store';
+import { rootReducer } from './reducers';
 
 
 
@@ -59,7 +60,8 @@ import { StoreModule } from '@ngrx/store';
       }
     ),
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot(), StoreModule.forRoot({}, {}), // ToastrModule added
+    ToastrModule.forRoot(),// ToastrModule added
+    StoreModule.forRoot(rootReducer),
   ],
   providers: [
     {
