@@ -23,6 +23,10 @@ export function projectReducer(state = initialState, action: Action) {
             const updatedProjects = state.projects.concat(action.payload.data);
             return { ...state, loading: false, loaded: true, projects: updatedProjects }
         };
+        case projectActions.PROJECT_ADDED: {
+            const projectsList = state.projects.concat(action.payload.data);
+            return { ...state, projects: projectsList }
+        };
         default: {
             return state;
         }
