@@ -13,6 +13,7 @@ import { getProjectLoaded, getProjects, RootReducerState } from '../reducers';
 import { Store } from '@ngrx/store';
 import { ProjectsListRequestedAction, ProjectsListSuccessAction } from './../actions/projects-action';
 import { getProjectLoading } from './../reducers/index';
+import { combineLatest } from 'rxjs';
 
 
 @Component({
@@ -59,40 +60,35 @@ export class ProjectsComponent implements OnInit {
 
   getProjects() {
 
-    let projectLoaded = false;
-    let projectLoading = false;
+
 
     const loading = this.store.select(getProjectLoading);
     const loaded = this.store.select(getProjectLoaded);
     const getProjectsData = this.store.select(getProjects);
 
-    loading.subscribe(
+    const loadingAndLoadedObs = combineLatest([loading, loaded]);
+
+    loadingAndLoadedObs.subscribe(
       (data) => {
-        projectLoading = data;
+        if (!data[0] && !data[1]) {
+
+          this.store.dispatch(new ProjectsListRequestedAction());
+
+          this.service.getProjects()
+            .subscribe(
+              (response) => {
+                //    this.projects = response;
+                this.store.
+                  dispatch(new ProjectsListSuccessAction({ data: response }))
+                this.showLoading = false
+              }
+            )
+        }
       }
     )
 
-    loaded.subscribe(
-      (data) => {
-        projectLoaded = data;
-      }
-    )
 
 
-    if (!projectLoaded && !projectLoading) {
-
-      this.store.dispatch(new ProjectsListRequestedAction());
-
-      this.service.getProjects()
-        .subscribe(
-          (response) => {
-            //    this.projects = response;
-            this.store.
-              dispatch(new ProjectsListSuccessAction({ data: response }))
-            this.showLoading = false
-          }
-        )
-    }
 
     getProjectsData.subscribe(
       (data) => {
