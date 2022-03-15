@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Project } from './../projects/project';
 
 @Component({
@@ -9,10 +9,22 @@ import { Project } from './../projects/project';
 export class ProjectComponent implements OnInit {
 
   @Input("currentProject") project: Project | any;
+  @Input("index") index: number = 0;
+
+  @Output("editClick") editClick = new EventEmitter();
+  @Output("deleteClick") deleteClick = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onEditClick(event: any, index: number) {
+    this.editClick.emit({ event, index })
+  }
+
+  onDeleteClick(event: any, index: number) {
+    this.deleteClick.emit({ event, index })
   }
 
 }
