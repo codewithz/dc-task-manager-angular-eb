@@ -14,6 +14,7 @@ import { Store } from '@ngrx/store';
 import { ProjectsListRequestedAction, ProjectsListSuccessAction } from './../actions/projects-action';
 import { getProjectLoading } from './../reducers/index';
 import { combineLatest } from 'rxjs';
+import { ProjectRepositoryService } from './project-repository.service';
 
 
 @Component({
@@ -47,7 +48,7 @@ export class ProjectsComponent implements OnInit {
   constructor(private service: ProjectsService,
     private clientLocationService: ClientLocationsService,
     private alertService: AlertService,
-    private store: Store<RootReducerState>
+    private projectRepository: ProjectRepositoryService
   ) { }
 
   ngOnInit(): void {
@@ -59,38 +60,8 @@ export class ProjectsComponent implements OnInit {
   }
 
   getProjects() {
-
-
-
-    const loading = this.store.select(getProjectLoading);
-    const loaded = this.store.select(getProjectLoaded);
-    const getProjectsData = this.store.select(getProjects);
-
-    const loadingAndLoadedObs = combineLatest([loading, loaded]);
-
-    loadingAndLoadedObs.subscribe(
-      (data) => {
-        if (!data[0] && !data[1]) {
-
-          this.store.dispatch(new ProjectsListRequestedAction());
-
-          this.service.getProjects()
-            .subscribe(
-              (response) => {
-                //    this.projects = response;
-                this.store.
-                  dispatch(new ProjectsListSuccessAction({ data: response }))
-                this.showLoading = false
-              }
-            )
-        }
-      }
-    )
-
-
-
-
-    getProjectsData.subscribe(
+    const projectData = this.projectRepository.getProjectsData();
+    projectData.subscribe(
       (data) => {
         this.projects = data;
         this.showLoading = false
