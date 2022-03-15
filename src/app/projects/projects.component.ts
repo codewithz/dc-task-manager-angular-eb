@@ -90,23 +90,15 @@ export class ProjectsComponent implements OnInit {
       this.newProject.clientLocation = this.clientLocations.find(
         (client) => client.clientLocationID == this.newProject.clientLocationID
       )
-      this.service.createProject(this.newProject)
-        .subscribe(
-          (response) => {
-            let createdProject: Project = response;
-            this.projects.push(createdProject);
+      if (this.projectRepository.addProject(this.newProject) === 'SUCCESS') {
+        // Reset the form 
+        this.newProject = new Project();
+        //Showing the Toast
+        this.alertService.showSuccess("Project Addition", "Success")
+        // Make the JQuery Call 
+        $('#newProjectCancel').trigger('click')
+      }
 
-            // Reset the form 
-            this.newProject = new Project();
-            //Showing the Toast
-            this.alertService.showSuccess("Project Addition", "Success")
-            // Make the JQuery Call 
-            $('#newProjectCancel').trigger('click')
-          },
-          (error) => {
-            console.log(error)
-          }
-        )
     }
   }
 

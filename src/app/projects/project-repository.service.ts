@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { combineLatest, Observable } from 'rxjs';
-import { ProjectsListRequestedAction, ProjectsListSuccessAction } from '../actions/projects-action';
+import { ProjectAddedAction, ProjectsListRequestedAction, ProjectsListSuccessAction } from '../actions/projects-action';
 import { getProjectLoaded, getProjectLoading, getProjects, RootReducerState } from '../reducers';
 import { Project } from './project';
 import { ProjectsService } from './projects.service';
@@ -41,5 +41,23 @@ export class ProjectRepositoryService {
     );
 
     return getProjectsData;
+  }
+
+  addProject(data: Project): string {
+    let status = '';
+    this.service.createProject(data)
+      .subscribe(
+        (response) => {
+          let createdProject: Project = response;
+          this.store.dispatch(new ProjectAddedAction({ data: createdProject }));
+          status = 'SUCCESS';
+        },
+        (error) => {
+          status = 'FAILURE';
+          console.log(error)
+        }
+      )
+
+    return status;
   }
 }
