@@ -32,6 +32,6 @@ export function projectReducer(state = initialState, action: Action) {
 
 //Selectors : Are like the observables which helps us to listen to a specific slice o a state
 
-const getLoading = (state: ProjectReducerState) => state.loading;
-const getLoaded = (state: ProjectReducerState) => state.loaded;
-const getAllProjects = (state: ProjectReducerState) => state.projects;
+export const getLoading = (state: ProjectReducerState) => state.loading;
+export const getLoaded = (state: ProjectReducerState) => state.loaded;
+export const getAllProjects = (state: ProjectReducerState) => state.projects;
