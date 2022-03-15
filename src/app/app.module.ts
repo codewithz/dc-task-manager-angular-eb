@@ -22,6 +22,7 @@ import { ClientLocationStatusValidatorDirective } from './directives/client-loca
 import { ProjectIdUniqueValidatorDirective } from './directives/project-id-unique-validator.directive';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ProjectComponent } from './project/project.component';
+import { StoreModule } from '@ngrx/store';
 
 
 
@@ -58,7 +59,7 @@ import { ProjectComponent } from './project/project.component';
       }
     ),
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot(), // ToastrModule added
+    ToastrModule.forRoot(), StoreModule.forRoot({}, {}), // ToastrModule added
   ],
   providers: [
     {
